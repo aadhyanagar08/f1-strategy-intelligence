@@ -51,6 +51,21 @@ def _race_results(season: int, round_num: Optional[int] = None) -> DataResult:
     return DataResult(source="jolpica", endpoint=path, data=_jolpica(path))
 
 
+def _qualifying_results(season: int, round_num: int) -> DataResult:
+    path = f"/{season}/{round_num}/qualifying"
+    return DataResult(source="jolpica", endpoint=path, data=_jolpica(path))
+
+
+def _sprint_results(season: int, round_num: int) -> DataResult:
+    path = f"/{season}/{round_num}/sprint"
+    return DataResult(source="jolpica", endpoint=path, data=_jolpica(path))
+
+
+def _fastest_laps(season: int, round_num: int) -> DataResult:
+    path = f"/{season}/{round_num}/laps/fastest"
+    return DataResult(source="jolpica", endpoint=path, data=_jolpica(path))
+
+
 def _driver_standings(season: int) -> DataResult:
     path = f"/{season}/driverStandings"
     return DataResult(source="jolpica", endpoint=path, data=_jolpica(path))
@@ -178,6 +193,19 @@ def data_agent(state: AgentState) -> dict:
             results.append(_race_results(c_season, c_round))
         except Exception:
             pass
+        try:
+            results.append(_qualifying_results(c_season, c_round))
+        except Exception:
+            pass
+        try:
+            results.append(_fastest_laps(c_season, c_round))
+        except Exception:
+            pass
+        if is_sprint:
+            try:
+                results.append(_sprint_results(c_season, c_round))
+            except Exception:
+                pass
         results.append(_fastf1_best_available(c_season, c_round, is_sprint))
     else:
         for task in tasks:
