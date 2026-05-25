@@ -1,11 +1,12 @@
+import sys
 from dotenv import load_dotenv
+
 load_dotenv()
 
-import sys
 sys.path.insert(0, ".")
 
-import streamlit as st
-from graph import run_pipeline
+import streamlit as st  # noqa: E402
+from graph import run_pipeline  # noqa: E402
 
 st.set_page_config(page_title="F1 Strategy Intelligence", page_icon="🏎️", layout="centered")
 

@@ -1,6 +1,6 @@
 from langgraph.graph import StateGraph, START, END
 from langgraph.types import Send
-from state import AgentState
+from state import AgentState, StrategyRecommendation
 from agents.planner import planner_agent
 from agents.retrieval import retrieval_agent
 from agents.data_agent import data_agent
@@ -24,7 +24,7 @@ def _route_from_planner(state: AgentState) -> list[Send]:
     return sends
 
 
-def build_graph() -> StateGraph:
+def build_graph():
     builder = StateGraph(AgentState)
 
     builder.add_node("planner", planner_agent)
@@ -53,9 +53,7 @@ def build_graph() -> StateGraph:
 graph = build_graph()
 
 
-def run_pipeline(query: str) -> "StrategyRecommendation | None":
-    from state import StrategyRecommendation  # local import avoids circular refs at module load
-
+def run_pipeline(query: str) -> StrategyRecommendation | None:
     initial_state: AgentState = {
         "query": query,
         "sub_tasks": [],

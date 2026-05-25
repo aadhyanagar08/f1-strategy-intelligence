@@ -2,15 +2,17 @@
 Automated evaluation harness for the F1 Strategy Intelligence pipeline.
 Run from the project root:  python eval/auto_eval.py
 """
+import sys
+import time
 from dotenv import load_dotenv
+
 load_dotenv()
 
-import sys, time
 sys.path.insert(0, ".")
 
-from dataclasses import dataclass, field
-from typing import List
-from graph import run_pipeline
+from dataclasses import dataclass  # noqa: E402
+from typing import List  # noqa: E402
+from graph import run_pipeline  # noqa: E402
 
 CONFIDENCE_THRESHOLD = 0.6
 PASS_KEYWORD_THRESHOLD = 0.5   # at least 50% of expected keywords must match
