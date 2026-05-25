@@ -28,9 +28,84 @@ DRIVERS_2026: dict[str, list[str]] = {
 # (season, round, is_sprint_weekend)
 # Sprint weekends have only FP1 (no FP2/FP3); available sessions: FP1, SQ, S, Q, R.
 _CIRCUIT_MAP: dict[str, tuple[int, int, bool]] = {
-    "montreal": (2026, 5, True),
-    "canada":   (2026, 5, True),
-    "canadian": (2026, 5, True),
+    # Round 1 — Australia
+    "australia":    (2026, 1, False),
+    "melbourne":    (2026, 1, False),
+    "australian":   (2026, 1, False),
+    # Round 2 — China (sprint)
+    "china":        (2026, 2, True),
+    "shanghai":     (2026, 2, True),
+    "chinese":      (2026, 2, True),
+    # Round 3 — Bahrain
+    "bahrain":      (2026, 3, False),
+    "sakhir":       (2026, 3, False),
+    # Round 4 — Saudi Arabia
+    "saudi":        (2026, 4, False),
+    "jeddah":       (2026, 4, False),
+    "saudi arabia": (2026, 4, False),
+    # Round 5 — Canada (sprint)
+    "montreal":     (2026, 5, True),
+    "canada":       (2026, 5, True),
+    "canadian":     (2026, 5, True),
+    # Round 6 — Spain
+    "spain":        (2026, 6, False),
+    "barcelona":    (2026, 6, False),
+    "spanish":      (2026, 6, False),
+    # Round 7 — Austria (sprint)
+    "austria":      (2026, 7, True),
+    "spielberg":    (2026, 7, True),
+    "austrian":     (2026, 7, True),
+    # Round 8 — Britain
+    "britain":      (2026, 8, False),
+    "silverstone":  (2026, 8, False),
+    "british":      (2026, 8, False),
+    # Round 9 — Belgium
+    "belgium":      (2026, 9, False),
+    "spa":          (2026, 9, False),
+    "belgian":      (2026, 9, False),
+    # Round 10 — Hungary
+    "hungary":      (2026, 10, False),
+    "budapest":     (2026, 10, False),
+    "hungarian":    (2026, 10, False),
+    # Round 11 — Netherlands
+    "netherlands":  (2026, 11, False),
+    "zandvoort":    (2026, 11, False),
+    "dutch":        (2026, 11, False),
+    # Round 12 — Italy
+    "italy":        (2026, 12, False),
+    "monza":        (2026, 12, False),
+    "italian":      (2026, 12, False),
+    # Round 13 — Azerbaijan (sprint)
+    "azerbaijan":   (2026, 13, True),
+    "baku":         (2026, 13, True),
+    # Round 14 — Singapore
+    "singapore":    (2026, 14, False),
+    "marina bay":   (2026, 14, False),
+    # Round 15 — USA / Austin (sprint)
+    "usa":          (2026, 15, True),
+    "austin":       (2026, 15, True),
+    "cota":         (2026, 15, True),
+    "united states": (2026, 15, True),
+    # Round 16 — Mexico
+    "mexico":       (2026, 16, False),
+    "mexico city":  (2026, 16, False),
+    "mexican":      (2026, 16, False),
+    # Round 17 — Brazil (sprint)
+    "brazil":       (2026, 17, True),
+    "sao paulo":    (2026, 17, True),
+    "interlagos":   (2026, 17, True),
+    "brazilian":    (2026, 17, True),
+    # Round 18 — Las Vegas
+    "las vegas":    (2026, 18, False),
+    "vegas":        (2026, 18, False),
+    # Round 19 — Qatar (sprint)
+    "qatar":        (2026, 19, True),
+    "lusail":       (2026, 19, True),
+    "qatari":       (2026, 19, True),
+    # Round 20 — Abu Dhabi
+    "abu dhabi":    (2026, 20, False),
+    "yas marina":   (2026, 20, False),
+    "yas":          (2026, 20, False),
 }
 
 # Session preference order per weekend type. FastF1 raises for sessions that

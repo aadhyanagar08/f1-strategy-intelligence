@@ -56,8 +56,6 @@ graph = build_graph()
 def run_pipeline(query: str) -> "StrategyRecommendation | None":
     from state import StrategyRecommendation  # local import avoids circular refs at module load
 
-    compiled = build_graph()
-
     initial_state: AgentState = {
         "query": query,
         "sub_tasks": [],
@@ -68,5 +66,5 @@ def run_pipeline(query: str) -> "StrategyRecommendation | None":
         "error": None,
     }
 
-    final_state = compiled.invoke(initial_state)
+    final_state = graph.invoke(initial_state)
     return final_state.get("synthesis_output")

@@ -7,13 +7,12 @@ services:
       - "8000:8000"
     env_file:
       - .env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
     volumes:
       - ./chroma_db:/app/chroma_db
       - ./fastf1_cache:/app/fastf1_cache
-      - ./regulations:/app/regulations
-    depends_on:
-      ollama:
-        condition: service_healthy
+      - ./data:/app/data
     restart: unless-stopped
 
   mcp:
@@ -21,25 +20,8 @@ services:
     command: python mcp_server.py
     env_file:
       - .env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
     volumes:
       - ./chroma_db:/app/chroma_db
-    depends_on:
-      ollama:
-        condition: service_healthy
     restart: unless-stopped
-
-  ollama:
-    image: ollama/ollama:latest
-    ports:
-      - "11434:11434"
-    volumes:
-      - ollama_data:/root/.ollama
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    restart: unless-stopped
-
-volumes:
-  ollama_data:
